@@ -22,22 +22,22 @@
   [bottom-left top-right])
 
 (defn width [rectangle]
-  (let [[[x1 y1] [x2 y2]] rectangle] 
+  (let [[[x1 y1] [x2 y2]] rectangle]
     (Math/abs (- x2 x1))))
 
 (defn height [rectangle]
-  (let [[[x1 y1] [x2 y2]] rectangle] 
+  (let [[[x1 y1] [x2 y2]] rectangle]
     (Math/abs (- y2 y1))))
 
 (defn square? [rectangle]
-  (let [[[x1 y1] [x2 y2]] rectangle] 
+  (let [[[x1 y1] [x2 y2]] rectangle]
     (= (width rectangle) (height rectangle))))
 
 (defn area [rectangle]
   (* (width rectangle) (height rectangle)))
 
 (defn contains-point? [rectangle point]
-  (let [[[x1 y1] [x2 y2]] rectangle 
+  (let [[[x1 y1] [x2 y2]] rectangle
         [x y] point]
     (and (<= x1 x x2) (<= y1 y y2))))
 
@@ -65,17 +65,25 @@
   (map count collection))
 
 (defn second-elements [collection]
-  (let [second-element (fn [col] (col 1))]
+  (let [second-element (fn [col] (get col 1))]
     (map second-element collection)))
+
+(second-elements [[1 2 3 4] [1] ["a" "s" "d" "f"]])
 
 (defn titles [books]
   (map :title books))
 
+(defn increasing? [a-seq]
+  (apply >= a-seq))
+
+(defn decreasing? [a-seq]
+  (apply <= a-seq))
+
 (defn monotonic? [a-seq]
-  :-)
+  (or (increasing? a-seq) (decreasing? a-seq)))
 
 (defn stars [n]
-  :-)
+  (clojure.string/join (repeat n "*")))
 
 (defn toggle [a-set elem]
   :-)
