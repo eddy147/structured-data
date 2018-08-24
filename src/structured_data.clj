@@ -68,8 +68,6 @@
   (let [second-element (fn [col] (get col 1))]
     (map second-element collection)))
 
-(second-elements [[1 2 3 4] [1] ["a" "s" "d" "f"]])
-
 (defn titles [books]
   (map :title books))
 
@@ -86,10 +84,10 @@
   (clojure.string/join (repeat n "*")))
 
 (defn toggle [a-set elem]
-  :-)
+  (if (contains? a-set elem) (disj a-set elem) (conj a-set elem)))
 
 (defn contains-duplicates? [a-seq]
-  :-)
+  (not (apply distinct? a-seq)))
 
 (defn old-book->new-book [book]
   :-)
@@ -98,10 +96,12 @@
   :-)
 
 (defn authors [books]
-  :-)
+  (set (map :authors books)))
 
 (defn all-author-names [books]
-  :-)
+  (let [author-names
+        (fn [book] (map :name (:authors book)))]
+    (set (apply concat (map author-names books)))))
 
 (defn author->string [author]
   :-)
