@@ -11,4 +11,6 @@ pom.xml
 .gorilla-port
 .lein-repl-history
 .nrepl-port
+.vscode
+.history
 
