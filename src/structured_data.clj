@@ -135,19 +135,23 @@
   (if (empty? books) "No books."
       (str (books-count-as-string books) ". " (apply str (interpose ". " (map book->string books))) ".")))
 
+;; Exercise 30
 (defn books-by-author [author books]
-  :-)
+  (filter (fn [b] (has-author? b author)) books))
 
+;; Exercise 31
 (defn author-by-name [name authors]
-  :-)
+  (first (filter (fn [a] (= (:name a) name)) authors)))
 
+;; Exercise 32
 (defn living-authors [authors]
-  :-)
+  (filter alive? authors))
 
+;; Exercise 33
 (defn has-a-living-author? [book]
-  :-)
+  (let [authors (:authors book)]
+    (not (empty? (living-authors authors)))))
 
+;; Exercise 34
 (defn books-by-living-authors [books]
-  :-)
-
-; %________%
+  (filter has-a-living-author? books))

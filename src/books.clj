@@ -12,3 +12,4 @@
                      :authors #{friedman, felleisen}})
 
 (def books [cities, wild-seed, embassytown, little-schemer])
+(def authors #{china, felleisen, octavia, friedman})
