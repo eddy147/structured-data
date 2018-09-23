@@ -121,13 +121,19 @@
     (str author-name (author-years author))))
 
 (defn authors->string [authors]
-  :-)
+  (apply str (interpose ", " (map author->string authors))))
 
 (defn book->string [book]
-  :-)
+  (apply str (:title book) ", written by " (authors->string (:authors book))))
 
+(defn books-count-as-string [books]
+  (let [books-count (count books)]
+    (str books-count " book" (if (< 1 books-count) "s" ""))))
+
+;; Exercise 29
 (defn books->string [books]
-  :-)
+  (if (empty? books) "No books."
+      (str (books-count-as-string books) ". " (apply str (interpose ". " (map book->string books))) ".")))
 
 (defn books-by-author [author books]
   :-)
